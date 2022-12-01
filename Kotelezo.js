@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+const IP = require('./Ipcim');
 
 export default class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class App extends Component {
 
   async getMovies() {
     try {
-      const response = await fetch('http://192.168.6.14:3000/kotelezo');
+      const response = await fetch(IP.ipcim+'kotelezo');
       const json = await response.json();
       console.log(json)
       this.setState({ data: json });
@@ -33,20 +34,18 @@ export default class App extends Component {
     const { data, isLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24 , marginTop:40}}>
-        {isLoading ? <ActivityIndicator/> : (
+      <View style={{ flex: 1, padding: 24, marginTop: 40 }}>
+        {isLoading ? <ActivityIndicator /> : (
           <FlatList
             data={data}
             keyExtractor={({ film_id }, index) => film_id}
             renderItem={({ item }) => (
 
-              <View style={{marginBottom:30}}>
-              <Text style={{fontSize:30,color:'darkred',textAlign:'center'}}>
-                {item.iro_nev},
-                {item.konyv_nev},
-                {item.mufaj_nev}
-              </Text>
-              <Image   source={{uri:'http://192.168.6.14:3000/'+item.konyv_kep}} style={{width:300,height:300,alignSelf:'center'}}   />         
+              <View style={{ marginBottom: 30 }}>
+                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}> {item.iro_nev}</Text>
+                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}>{item.konyv_nev}</Text>
+                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}>{item.mufaj_nev}</Text>
+                <Image source={{ uri: IP.ipcim+item.konyv_kep }} style={{ width: 300, height: 450, alignSelf: 'center' }} />
               </View>
             )}
           />
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "blue",
     padding: 10,
-    marginLeft:30,
-    marginRight:30
+    marginLeft: 30,
+    marginRight: 30
   },
   countContainer: {
     alignItems: "center",
