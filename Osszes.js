@@ -84,12 +84,12 @@ fetch(IP.ipcim+'osszeskereso', {
             data={data}
             keyExtractor={({ film_id }, index) => film_id}
             renderItem={({ item }) => (
-              <View style={{ marginBottom: 30 }}>
+              <View style={{ marginBottom: 10 }}>
                 <Text style={{ fontSize: 35, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Konyvprofil', {konyvid: item.kp_id})}>
-                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 250, alignSelf: 'center',borderRadius:5 }} />
+                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 225, alignSelf: 'center',borderRadius:5 }} />
                 </TouchableOpacity>
-                <View style={{borderBottomWidth:5,borderBottomColor:'blue',padding:10}}></View>
+              
               </View>
             )}
           />
