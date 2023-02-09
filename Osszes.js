@@ -15,7 +15,7 @@ export default class App extends Component {
 
   async getMovies() {
     try {
-      const response = await fetch(IP.ipcim + 'kotelezo');
+      const response = await fetch(IP.ipcim + 'osszes');
       const json = await response.json();
       console.log(json)
       this.setState({ data: json });
@@ -38,7 +38,7 @@ export default class App extends Component {
         bevitel1:this.state.keres
        
       }
-fetch(IP.ipcim+'kereso', {
+fetch(IP.ipcim+'osszeskereso', {
     method: "POST",
     body: JSON.stringify(bemenet),
     headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -66,7 +66,7 @@ fetch(IP.ipcim+'kereso', {
     const { data, isLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24, marginTop: 5, backgroundColor: 'rgb(245, 240, 230)'}}>
+      <View style={{ flex: 1, padding: 24, marginTop: 5, backgroundColor: 'rgb(245, 240, 230)' }}>
         <TextInput
           style={{ height: 40, fontSize: 30,textAlign:'center' }}
           placeholder="keress könyvet!"
@@ -85,9 +85,9 @@ fetch(IP.ipcim+'kereso', {
             keyExtractor={({ film_id }, index) => film_id}
             renderItem={({ item }) => (
               <View style={{ marginBottom: 30 }}>
-                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
+                <Text style={{ fontSize: 35, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Konyvprofil', {konyvid: item.kp_id})}>
-                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 300, height: 450, alignSelf: 'center',borderRadius:5 }} />
+                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 250, alignSelf: 'center',borderRadius:5 }} />
                 </TouchableOpacity>
                 <View style={{borderBottomWidth:5,borderBottomColor:'blue',padding:10}}></View>
               </View>

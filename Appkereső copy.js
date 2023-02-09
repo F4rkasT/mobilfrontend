@@ -66,18 +66,18 @@ fetch(IP.ipcim+'kereso', {
     const { data, isLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24, marginTop: 5, backgroundColor: 'rgb(245, 240, 230)'}}>
+      <View style={{ flex: 1, padding: 24, marginTop: 40, backgroundColor: 'rgb(245, 240, 230)'}}>
         <TextInput
-          style={{ height: 40, fontSize: 30,textAlign:'center' }}
+          style={{ height: 40, marginTop: 40, fontSize: 30 }}
           placeholder="keress könyvet!"
           onChangeText={(beirtszoveg) => this.setState({ keres: beirtszoveg })}
           value={this.state.keres}
         />
         <TouchableOpacity
-          style={{ backgroundColor: "blue", margin: 5 }}
+          style={{ backgroundColor: "grey", margin: 5 }}
           onPress={() => this.kattintas()}
         >
-          <Text style={{color:'white',textAlign:'center',fontSize:20}}>Keresés</Text>
+          <Text>Keresés</Text>
         </TouchableOpacity>
         {isLoading ? <ActivityIndicator /> : (
           <FlatList
@@ -86,9 +86,7 @@ fetch(IP.ipcim+'kereso', {
             renderItem={({ item }) => (
               <View style={{ marginBottom: 30 }}>
                 <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Konyvprofil', {konyvid: item.kp_id})}>
-                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 300, height: 450, alignSelf: 'center',borderRadius:5 }} />
-                </TouchableOpacity>
+                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 300, height: 450, alignSelf: 'center' }} />
                 <View style={{borderBottomWidth:5,borderBottomColor:'blue',padding:10}}></View>
               </View>
             )}
