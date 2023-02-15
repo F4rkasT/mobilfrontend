@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 const IP = require('./Ipcim');
 
 export default class App extends Component {
@@ -67,6 +67,7 @@ fetch(IP.ipcim+'osszeskereso', {
 
     return (
       <View style={{ flex: 1, padding: 24, marginTop: 5, backgroundColor: 'rgb(245, 240, 230)' }}>
+        <View>
         <TextInput
           style={{ height: 40, fontSize: 30,textAlign:'center' }}
           placeholder="keress könyvet!"
@@ -79,21 +80,20 @@ fetch(IP.ipcim+'osszeskereso', {
         >
           <Text style={{color:'white',textAlign:'center',fontSize:20}}>Keresés</Text>
         </TouchableOpacity>
+        </View>
+        <ScrollView>
         {isLoading ? <ActivityIndicator /> : (
-          <FlatList
-            data={data}
-            keyExtractor={({ film_id }, index) => film_id}
-            renderItem={({ item }) => (
-              <View style={{ marginBottom: 10 }}>
+          data.map(item =>
+            <View style={{ marginBottom: 10 }}>
                 <Text style={{ fontSize: 35, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Konyvprofil', {konyvid: item.kp_id})}>
-                <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 225, alignSelf: 'center',borderRadius:5 }} />
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Konyvprofil', { konyvid: item.kp_id })}>
+                    <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 225, alignSelf: 'center', borderRadius: 5 }} />
                 </TouchableOpacity>
-              
-              </View>
-            )}
-          />
+
+            </View>
+        )
         )}
+        </ScrollView>
       </View>
     );
   }

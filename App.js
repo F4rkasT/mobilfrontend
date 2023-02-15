@@ -27,13 +27,13 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
-function kotelezo_lap({ navigation }) {
+function Kotelezo_lap({ navigation }) {
   return (
    <Kotelezo navigation={navigation}/>
   );
 }
 
-function osszeskonyv_lap({ navigation }) {
+function Osszeskonyv_lap({ navigation }) {
   return (
    <Osszes navigation={navigation}/>
   );
@@ -52,8 +52,8 @@ function Root({ navigation }) {
 <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-        <Drawer.Screen name="Kotelezo_olvasmanyok" options={{title: 'Kötelező Olvasmányok'}} component={kotelezo_lap} />
-        <Drawer.Screen name="osszes_konyv" options={{title: 'Összes könyv'}} component={osszeskonyv_lap} />
+        <Drawer.Screen name="Kotelezo_olvasmanyok" options={{title: 'Kötelező Olvasmányok'}} component={Kotelezo_lap} />
+        <Drawer.Screen name="Osszes_konyv" options={{title: 'Összes könyv'}} component={Osszeskonyv_lap} />
         {/*<Drawer.Screen name="Konyv_Profil" options={{title: 'Könyv Profil'}} component={konyvprofil_lap} />*/}
 </Drawer.Navigator>
 
