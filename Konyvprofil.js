@@ -153,8 +153,8 @@ export default class App extends Component {
                     data={datauzenet}
                     renderItem={({ item }) => (
                         <View>
-                            <Text style={{ textAlign: 'center', fontSize: 15, paddingBottom: 15, fontWeight: 'bold' }}>{item.konyv_cime}</Text>
-                            <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 200, height: 300, alignSelf: 'center', borderRadius: 5 }} />
+                            <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 250, alignSelf: 'center', borderRadius: 5 }} />
+                            <Text style={{ textAlign: 'center', fontSize: 30, paddingBottom: 15, fontWeight: 'bold' }}>{item.konyv_cime}</Text>
                             <Text style={{ textAlign: 'center', fontSize: 15, paddingBottom: 15, fontWeight: 'bold' }}>{item.kp_leiras}</Text>
                             {/* Modal */}
                             <Modal

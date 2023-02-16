@@ -74,7 +74,7 @@ fetch(IP.ipcim+'kereso', {
           value={this.state.keres}
         />
         <TouchableOpacity
-          style={{ backgroundColor: "blue", margin: 5 }}
+          style={{ backgroundColor: "blue", margin: 5, borderRadius:10}}
           onPress={() => this.kattintas()}
         >
           <Text style={{color:'white',textAlign:'center',fontSize:20}}>Keresés</Text>
@@ -85,11 +85,10 @@ fetch(IP.ipcim+'kereso', {
             keyExtractor={({ film_id }, index) => film_id}
             renderItem={({ item }) => (
               <View style={{ marginBottom: 30 }}>
-                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center' }}>{item.konyv_cime}</Text>
+                <Text style={{ fontSize: 30, color: 'darkred', textAlign: 'center',paddingBottom:10,fontWeight:'bold' }}>{item.konyv_cime}</Text>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Konyvprofil', {konyvid: item.kp_id})}>
                 <Image source={{ uri: IP.ipcim + item.kp_kep }} style={{ width: 150, height: 225, alignSelf: 'center',borderRadius:5 }} />
                 </TouchableOpacity>
-                <View style={{borderBottomWidth:5,borderBottomColor:'blue',padding:10}}></View>
               </View>
             )}
           />
